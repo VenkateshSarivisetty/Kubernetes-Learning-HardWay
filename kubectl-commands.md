@@ -32,3 +32,11 @@ kubectl create -f Deployment.yaml<br>
 kubectl get deployments<br>
 kubectl get rs<br>
 kubectl get pods<br>
+
+#namespace<br>
+kubectl create -f namespace-definition.yaml
+kubectl create namespace dev
+kubectl get pods --namespace=dev
+kubectl get pods --namespace=prod
+kubectl config set-context $(kubctl config current-context) --namespace=dev
+kubectl get pods --all-namepsace

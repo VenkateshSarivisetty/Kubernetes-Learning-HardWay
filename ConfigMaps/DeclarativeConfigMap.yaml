@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: weebapp-config-map
+data:
+  APP_COLOR: darbblue
+  APP_MODE: prod
+
+  #mysql-config
+envFrom:
+  - configMapRef:
+      port: 3306
+      max_allowed_packet: 128M
+
+  #redis-config
+envFrom:
+  - configMapRef:
+    port: 6379
+    rdb-compression: yes

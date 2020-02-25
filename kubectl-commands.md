@@ -52,20 +52,30 @@ kubectl describe configmap
 
 #Secrets<br>
 kubectl create secret generic<br>
-kubectl create secret generic app-secret --from-literal=DB_HOST=mysql
-kubectl create secret generic <secret-name> --from-file=<path-of-the file>
-kubectl create secret generic app-secret --from-file=app.secret.properties
-kubectl create -f secret-data.yaml
-kubectl get secrets
-kubectl describe secrets -o yaml
+kubectl create secret generic app-secret --from-literal=DB_HOST=mysql<br>
+kubectl create secret generic <secret-name> --from-file=<path-of-the file><br>
+kubectl create secret generic app-secret --from-file=app.secret.properties<br>
+kubectl create -f secret-data.yaml<br>
+kubectl get secrets<br>
+kubectl describe secrets -o yaml<br>
 
 
-#To View Secrets run below commands to encrypt the values
-echo -n 'mysql' | base64
-echo -n 'root' | base64
-echo -n 'paswrd' | base64
+#To View Secrets run below commands to encrypt the values<br>
+echo -n 'mysql' | base64<br>
+echo -n 'root' | base64<br>
+echo -n 'paswrd' | base64<br>
 
 #decode
-echo -n 'mysql' | base64 --decode
-echo -n 'root' | base64 --decode
-echo -n 'paswrd' | base64 --decode
+echo -n 'mysql' | base64 --decode<br>
+echo -n 'root' | base64 --decode<br>
+echo -n 'paswrd' | base64 --decode<br>
+
+#Container Security<br>
+docker run --user=1001 ubuntu sleep 3600<br>
+docker run --cap-add MAC_ADMIN ubuntu<br>
+docker run --privelaged ubuntu<br>
+
+#Kubernetes Service Account<br>
+kubernetes create serviceaccount <serviceaccountname>
+kubectl get serviceaccount
+kubectl describe serviceaccount <serviceaccountname>

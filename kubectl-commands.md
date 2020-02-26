@@ -76,6 +76,27 @@ docker run --cap-add MAC_ADMIN ubuntu<br>
 docker run --privelaged ubuntu<br>
 
 #Kubernetes Service Account<br>
-kubernetes create serviceaccount <serviceaccountname>
-kubectl get serviceaccount
-kubectl describe serviceaccount <serviceaccountname>
+kubectl create serviceaccount <serviceaccountname><br>
+kubectl get serviceaccount<br>
+kubectl describe serviceaccount <serviceaccountname><br>
+
+#Taints & Tolerations<br>
+kubectl taint nodes node-name key=value:taint-effect<br>
+kubectl taint nodes node-name key=value:Noschedule/PreferNoSchedule/NoExecute<br>
+kubectl taint nodes node1 app=blue:NoSchedule<br>
+kubectl describe node kubemaster | grep Taint<br>
+kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule-<br>
+
+#Label Nodes
+kubectl label nodes <node-name> <label-key>=<label=value>
+kubectl label nodes node-1 size=Large Large or Medium/ Not Small
+
+#Multi-Continer log monitoring
+
+kubectl exec -it app cat /log/app.log
+
+# Log monitoring in kubernetes
+kubectl create -f <file-name>
+kubectl logs -f <pod-name>
+#To see logs in a multi-container
+kubectl logs -f <pod-name><container-name>

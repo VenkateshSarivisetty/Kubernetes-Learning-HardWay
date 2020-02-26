@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-webapp-2
+  labels:
+    name: simple-webapp-2
+spec:
+  containers:
+    - name: simple-webapp
+      image: kodekloud/webapp-delayed-start
+      ports:
+        - containerPort: 8080
+#
+      readinessProbe:
+        httpGet:
+          path: /api/ready
+          port: 8080
+
+        initialDelaySeconds: 10
+        periodSeconds: 5
+        failureThreshold: 8
+#DB readiness
+      readinessProbe:
+        tcpSocket:
+          port: 3306
+
+#container Readiness
+
+      readinessPort:
+        exec:
+          command:
+            - cat
+            - /app/is_ready

@@ -87,16 +87,30 @@ kubectl taint nodes node1 app=blue:NoSchedule<br>
 kubectl describe node kubemaster | grep Taint<br>
 kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule-<br>
 
-#Label Nodes
-kubectl label nodes <node-name> <label-key>=<label=value>
-kubectl label nodes node-1 size=Large Large or Medium/ Not Small
+#Label Nodes<br>
+kubectl label nodes <node-name> <label-key>=<label=value><br>
+kubectl label nodes node-1 size=Large Large or Medium/ Not Small<br>
 
-#Multi-Continer log monitoring
+#Multi-Continer log monitoring<br>
 
-kubectl exec -it app cat /log/app.log
+kubectl exec -it app cat /log/app.log<br>
 
-# Log monitoring in kubernetes
-kubectl create -f <file-name>
-kubectl logs -f <pod-name>
-#To see logs in a multi-container
-kubectl logs -f <pod-name><container-name>
+# Log monitoring in kubernetes<br>
+kubectl create -f <file-name><br>
+kubectl logs -f <pod-name><br>
+#To see logs in a multi-container<br>
+kubectl logs -f <pod-name><container-name><br>
+
+#lables<br>
+kubectl get pods --selector app=app1<br>
+kubectl get all --selector env=prod,bu=finance,tier=frontend<br>
+
+#RollOuts<br>
+kubectl rollout status deployment/myapp-deployment<br>
+kubectl rollout history deployment/myapp-deployment<br>
+kubectl rollout undo deployment/myapp-deployment<br>
+
+kubectl apply -f deployment-definition.yaml<br>
+kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1<br>
+
+

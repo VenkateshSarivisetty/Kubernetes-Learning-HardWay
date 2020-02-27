@@ -106,11 +106,12 @@ kubectl get pods --selector app=app1<br>
 kubectl get all --selector env=prod,bu=finance,tier=frontend<br>
 
 #RollOuts<br>
+kubectl create -f deployment-definition.yaml --record<br>
 kubectl rollout status deployment/myapp-deployment<br>
 kubectl rollout history deployment/myapp-deployment<br>
 kubectl rollout undo deployment/myapp-deployment<br>
 
 kubectl apply -f deployment-definition.yaml<br>
-kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1<br>
-
+kubectl set image deployment/myapp-deployment nginx-container=nginx:1.9.1<br>
+kubectl rollout history deployment nginx --revision=1<br>
 

@@ -115,3 +115,20 @@ kubectl apply -f deployment-definition.yaml<br>
 kubectl set image deployment/myapp-deployment nginx-container=nginx:1.9.1<br>
 kubectl rollout history deployment nginx --revision=1<br>
 
+#Jobs and Cronjobs<br>
+kubectl create -f job-definition.yaml
+kubectl get pods
+kubectl get jobs
+kubectl logs <container-name>
+kubectl delete job <job-name>
+kubectl create -f cronjob-definition.yaml
+kubectl get cronjobs
+
+#Services
+kubectl create -f service-definition.yaml
+kubectl get svc
+curl http://<NodeIP:30008>
+
+
+
+

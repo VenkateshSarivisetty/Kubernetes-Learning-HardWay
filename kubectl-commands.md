@@ -40,6 +40,7 @@ kubectl get pods --namespace=dev
 kubectl get pods --namespace=prod
 kubectl config set-context $(kubctl config current-context) --namespace=dev
 kubectl get pods --all-namepsace
+kubectl get deploy --namespace <namespace>
 
 #Config Map<br>
 kubectl create configmap<br>
@@ -129,6 +130,22 @@ kubectl create -f service-definition.yaml
 kubectl get svc
 curl http://<NodeIP:30008>
 
+#Ingress
+kubectl get ingress --all-namespaces
+kubectl describe ingress --namespace app-space
+kubectl edit ingress --namespace app-space
+kubectl get deploy --namespace app-space
+kubectl create configmap nginx-configuration --namespace ingress-space
+kubectl create serviceaccount <sa name> --namespace ingress-space
+kubectl get roles,rolebindings --namespace ingress-space
 
+#NetworkPolicy
+kubectl get networkpolicy
 
-
+#Volumes
+kubectl create -f pv-definition.yaml
+kubectl get persistentvolume
+kubectl get persistentvolumeclaim -- Pending State
+kubectl delete persistentvolumeclaim myclaim
+# Choose persistentVolumeReclaimPolicy: Retain/Delete/Recycle
+kubectl exec webapp cat /log/app.log

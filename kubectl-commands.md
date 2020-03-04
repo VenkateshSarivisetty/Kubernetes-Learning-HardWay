@@ -149,3 +149,9 @@ kubectl get persistentvolumeclaim -- Pending State
 kubectl delete persistentvolumeclaim myclaim
 # Choose persistentVolumeReclaimPolicy: Retain/Delete/Recycle
 kubectl exec webapp cat /log/app.log
+
+#StateFul Sets
+kubectl create -f stateful-definition.yaml
+kubectl scale statefulset mysql --replicas=5
+kubectl scale statefulset mysql --replicas=3
+kubectl delete statefulset mysql

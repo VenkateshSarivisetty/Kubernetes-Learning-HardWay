@@ -1,0 +1,7 @@
+1. Setup master first and then slaves
+2. Clone data from the master to slave-1
+3. Enable continuous replication from master to slave-1
+4. Wait for slave-1 to be ready
+5. Clone data from slave-1 to slave-2
+6. Enable continuous replication from master to slave-2
+7. Configure Master address to slave

@@ -8,6 +8,4 @@ spec:
   resources:
     requests:
       storage: 200Mi
-  selector:
-    matchLabels:
-      tier: log-volume
+  storageClassName: manual

@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: my-pod
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /opt/volume/nginx
+
+    spec:
+      containers:
+        - name: logger
+          image: nginx:alpine
+          volumeMounts:
+            - mountPath: "/var/www/html/"
+              name: mypd
+
+      volumes:
+        - name: log-volume
+          persistentVolumeClaim:
+          claimName: log-claim
